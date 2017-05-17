@@ -1,0 +1,5 @@
+---
+  bootstrap__admin_users:
+    - name: devops
+      home: /home/devops
+  bootstrap__domain: querium.local

@@ -4,6 +4,10 @@
 
 - Define server conguration roles in a format which can be utilized by both Vagrant and Terraform
 
+[AutoEnv](https://github.com/kennethreitz)
+
+- Magic per-project shell environments. Very pretentious.
+
 [DebOps](https://debops.org/)
 
 - A collection of Ansible playbooks, scalable from one container to an entire data center.
@@ -11,6 +15,10 @@
 [Packer](https://www.packer.io/)
 
 - Packer is a tool for creating machine images for providers like Virtualbox, VMWare, AWS, Google cloud.
+
+[PyEnv](https://github.com/pyenv/pyenv)
+
+- pyenv lets you easily switch between multiple versions of Python. it's like rb-env but for python
 
 [Virtualbox](https://www.virtualbox.org)
 

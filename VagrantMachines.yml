@@ -1,6 +1,9 @@
 ---
 - box: "bento/ubuntu-16.10"
   name: "node01"
+  vb_group: "/querium"
+  debops_groups:
+  - "debops_docker_hosts"
   nics:
     - type: "private_network"
       ip_addr: "192.168.100.101"
@@ -10,6 +13,9 @@
   vcpu: "2"
 - box: "bento/ubuntu-16.10"
   name: "node02"
+  vb_group: "/querium"
+  debops_groups:
+  - "debops_docker_hosts"
   nics:
     - type: "private_network"
       ip_addr: "192.168.100.102"
@@ -19,6 +25,9 @@
   vcpu: "2"
 - box: "bento/ubuntu-16.10"
   name: "node03"
+  vb_group: "/querium"
+  debops_groups:
+  - "debops_docker_hosts"
   nics:
     - type: "private_network"
       ip_addr: "192.168.100.103"

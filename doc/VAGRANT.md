@@ -8,6 +8,12 @@ Download and install Vagrant either [from the website](https://www.vagrantup.com
 
 `brew cask install vagrant`
 
+## Install Vagrant plugins
+
+Vai: A Vagrant provisioning plugin to output a usable Ansible inventory to use outside Vagrant.
+
+`vagrant plugin install vai`
+
 ## Files
 
 - **Vagrantfile**: This file is used by Vagrant to spin up the virtual machines. You should be able to use this file unchanged; all the VM configuration options are stored in `VagrantMachines.yml`

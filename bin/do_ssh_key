@@ -1,0 +1,70 @@
+#!/usr/bin/env python
+
+# read your local id_dsa.pub key and upload it to digital ocean
+# write the fingerprint for that key to terraform.tfvars file
+
+import json
+import requests
+import sys
+
+tfvars_file = 'terraform.tfvars'
+
+def usage():
+  print ""
+  print "usage: do_ssh_key SSH_PUB_KEY"
+  print ""
+  sys.exit(0)
+
+def readDoToken():
+  with open(tfvars_file, 'rb') as f:
+    for line in f:
+      if line.startswith('do_api_token='):
+        if line == 'do_api_token="<your-digital-ocean-api-token>"\n':
+          raise IOError('Digital Ocean API Token not set')
+        else:
+          return line.split('=')[1].replace('"', '').rstrip()
+
+def readPubKey(fName):
+  try:
+    with open(fName, 'rb') as f:
+      return f.read()
+  except IOError:
+    print "Could not read public key file:", fName
+
+def writeFingerprintTfvar(fingerprint):
+  with open(tfvars_file, 'r') as file:
+    data = file.readlines()
+
+  for idx, line in enumerate(data):
+    if line.startswith('do_ssh_key='):
+      data[idx] = 'do_ssh_key="'+fingerprint+'"\n'
+
+  with open(tfvars_file, 'w') as file:
+      file.writelines( data )
+
+if __name__ == '__main__':
+
+  if len(sys.argv) != 2:
+    usage()
+
+  try:
+    do_api_token = readDoToken()
+    pub_key = readPubKey(sys.argv[1])
+    pub_key_name = pub_key.split(' ')[2]
+    url = 'https://api.digitalocean.com/v2/account/keys'
+    headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+do_api_token
+    }
+    payload = {'name': pub_key_name, 'public_key': pub_key}
+    response = requests.post(url, headers=headers, json=payload)
+    json_data = json.loads(response.text)
+
+    if response.status_code == 201:
+      writeFingerprintTfvar(json_data['ssh_key']['fingerprint'])
+    else:
+      raise IOError(json_data['message'])
+      pass
+  except: # catch *all* exceptions
+   e = sys.exc_info()[1]
+   print e

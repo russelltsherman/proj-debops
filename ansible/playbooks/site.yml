@@ -1,0 +1,7 @@
+---
+- name: Common Server Setup
+  hosts: [ 'debops_all_hosts' ]
+  become: True
+
+- include: ntp.yml
+- include: docker.yml

@@ -20,7 +20,7 @@ bin/do_tf_inventory
 
 ## Provision hosts using ansible
 
-See here for instructions for [debops provisioning](doc/DEBOPSPROVISION.md)
+See here for instructions for [debops provisioning](DEBOPSPROVISION.md)
 
 ## Connect to a node to verify setup
 

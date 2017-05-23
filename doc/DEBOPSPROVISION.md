@@ -1,6 +1,7 @@
 # DebOps: Bootstrap hosts
 
-DebOps bootstrap is an Ansible role that helps prepare a given Debian/Ubuntu host to be managed by Ansible. It will install required Python packages, configure hostname and domain, create an admin account and set up SSH public keys for passwordless SSH access.
+DebOps bootstrap is an Ansible role that helps prepare a given Debian/Ubuntu host to be managed by Ansible.
+It will install required Python packages, configure hostname and domain, create an admin account and set up SSH public keys for passwordless SSH access.
 
 ```bash
 debops bootstrap --sudo -u vagrant --ask-pass

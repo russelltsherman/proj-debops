@@ -8,13 +8,15 @@ Download and install Terraform either [from the website](https://www.terraform.i
 
 `brew install terraform`
 
-## Files
+## Configuration Files
 
 - **Terraform.tf**: This file is used by Terraform to spin up the remote cloud machines.
 
-- **terraform.tfvars.example**: Copy this file to `terraform.tfvars` and place your Digital Ocean API token and SSH key fingerprint inside
+- **terraform.tfvars.example**: Copy this file to `terraform.tfvars` and place your Digital Ocean API token inside
 
 ## Upload your SSH key to Digital Ocean
+
+this script will upload your ssh key to digital ocean and write it's fingerprint to `terraform.tfvars`
 
 ```bash
 bin/do_ssh_key ~/.ssh/id_rsa.pub
@@ -23,7 +25,7 @@ bin/do_ssh_key ~/.ssh/id_rsa.pub
 ## Instructions
 
 These instructions assume you've already installed Terraform.
-Please refer to the documentation for more information on installation or configuration.
+Please see above for more information on installation or configuration.
 
 1. Use `terraform plan` to view changes required to bring providers up to current state
 

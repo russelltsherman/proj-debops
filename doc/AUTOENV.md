@@ -30,37 +30,16 @@ cd project
 
 ## Install
 
-Install it easily:
-
 Mac OS X Using Homebrew
 
 ```bash
 brew install autoenv
+```
+
+activate autoenv on shell load
+
+```bash
 echo "source $(brew --prefix autoenv)/activate.sh" >> ~/.bash_profile
-```
-
-Using pip
-
-```bash
-pip install autoenv
-echo "source `which activate.sh`" >> ~/.bashrc
-```
-
-Using git
-
-```bash
-git clone git://github.com/kennethreitz/autoenv.git ~/.autoenv
-echo 'source ~/.autoenv/activate.sh' >> ~/.bashrc
-```
-
-Using AUR
-
-Arch Linux users can install `autoenv <https://aur.archlinux.org/packages/autoenv/>`_ or `autoenv-git <https://aur.archlinux.org/packages/autoenv-git/>`_ with their favorite AUR helper.
-
-You need to source activate.sh in your bashrc afterwards:
-
-```bash
-echo 'source /usr/share/autoenv/activate.sh' >> ~/.bashrc
 ```
 
 ## Configuration

@@ -1,18 +1,7 @@
 # TERRAFORM
 
-This project currently assumes that you are provisioning hosts using Digital Ocean.
-
-Before moving forward log into your Digital Ocean account and generate an API token.
-
-## Configure terraform
-
-copy `terraform.tfvars.example` to `terraform.tfvars`
-
-edit `terraform.tfvars` and paste your Digital Ocean API token
-
-[create an SSH public key](https://confluence.atlassian.com/bitbucketserver/creating-ssh-keys-776639788.html) if you do not already have one.
-
-execute `bin/do_ssh_key` to send your ssh publick key to your digital ocean account.  This will write your SSH key fingerprint to `terraform.tfvars` for later use.
+These instructions assume you've already installed and configured Terraform.
+Please refer to the [documentation](TERRAFORM.md) for more information on installation or configuration.
 
 ## Provision remote virtual machines
 

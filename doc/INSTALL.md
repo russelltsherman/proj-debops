@@ -16,17 +16,25 @@
 
 - [PyEnv Setup](doc/PYENV.md)
 
+do not overlook the instructions for creating the querium python environment
+
 ## Install Ansible
 
 - [Ansible Setup](doc/ANSIBLE.md)
+
+can alternatively be installed by `pip install -r requirements.txt`
 
 ## Install DebOps
 
 - [DebOps Setup](doc/DEBOPS.md)
 
+can alternatively be installed by `pip install -r requirements.txt`
+
 ## Create GPG KeyPair
 
 - [Create GPG KeyPair](https://alexcabal.com/creating-the-perfect-gpg-keypair/)
+
+a GPG keypair is required if you opt to use debops-padlock to encrypt your local secrets store.
 
 ## Install Terraform
 

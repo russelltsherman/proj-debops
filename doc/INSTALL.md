@@ -27,3 +27,7 @@
 ## Create GPG KeyPair
 
 - [Create GPG KeyPair](https://alexcabal.com/creating-the-perfect-gpg-keypair/)
+
+## Install Terraform
+
+- [Terraform Setup](doc/TERRAFORM.md)

@@ -20,6 +20,11 @@
 
 - pyenv lets you easily switch between multiple versions of Python. it's like rb-env but for python
 
+[Terraform](https://www.terraform.io/)
+
+- Terraform is a tool for building and managing cloud virtual machine environments
+- Terraform will define and create a cloud virtual machine and provision that machine using Ansible
+
 [Virtualbox](https://www.virtualbox.org)
 
 - VirtualBox is a general-purpose full virtualizer for x86 hardware, targeted at server, desktop and embedded use.
@@ -29,7 +34,7 @@
 - Vagrant is a tool for building and managing local virtual machine environments
 - Vagrant will define and create a local virtual machine and provision that machine using Ansible
 
-[Terraform](https://www.terraform.io/)
+[Vault](https://www.vaultproject.io/)
 
-- Terraform is a tool for building and managing cloud virtual machine environments
-- Terraform will define and create a cloud virtual machine and provision that machine using Ansible
+- Vault secures, stores, and tightly controls access to tokens, passwords, certificates, API keys, and other secrets.
+- Vault handles leasing, key revocation, key rolling, and auditing through a unified API.

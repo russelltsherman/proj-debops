@@ -8,6 +8,12 @@ Download and install Terraform either [from the website](https://www.terraform.i
 
 `brew install terraform`
 
+Install python requirements for our terraform helper scripts
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Configuration Files
 
 - **Terraform.tf**: This file is used by Terraform to spin up the remote cloud machines.
@@ -16,7 +22,7 @@ Download and install Terraform either [from the website](https://www.terraform.i
 
 ## Upload your SSH key to Digital Ocean
 
-this script will upload your ssh key to digital ocean and write it's fingerprint to `terraform.tfvars`
+This script will upload your ssh key to digital ocean and write it's fingerprint to `terraform.tfvars`
 
 ```bash
 bin/do_ssh_key ~/.ssh/id_rsa.pub

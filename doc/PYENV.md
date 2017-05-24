@@ -10,9 +10,21 @@ Download and install Pyenv either [from the github](https://github.com/pyenv/pye
 
 `brew install pyenv`
 
+Add to your .profile this line to automatically initialize pyenv
+
+```bash
+eval "$(pyenv init -)"
+```
+
 Download and install Pyenv either [from the github](https://github.com/pyenv/pyenv-virtualenv) or use homebrew.
 
 `brew install pyenv-virtualenv`
+
+Add to your .profile this line to automatically initialize pyenv
+
+```bash
+eval "$(pyenv virtualenv-init -)"
+```
 
 ## Instructions
 

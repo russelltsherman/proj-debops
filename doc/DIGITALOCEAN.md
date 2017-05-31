@@ -12,6 +12,8 @@ use these curl commands to query the Digital Ocean API to see what options are a
 export TF_VAR_do_api_token='<digital-ocean-api-token>'
 ```
 
+to autoload this env var on directory entry add the following line to your .vars file
+
 ### list available Images
 
 request a list of images

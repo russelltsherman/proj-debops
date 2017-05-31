@@ -1,0 +1,2 @@
+
+export TF_VAR_do_api_token="<your-digital-ocean-api-token>"

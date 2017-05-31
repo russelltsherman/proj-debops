@@ -12,6 +12,10 @@
 
 - A collection of Ansible playbooks, scalable from one container to an entire data center.
 
+[JQ](https://stedolan.github.io/jq/)
+
+- jq is a lightweight and flexible command-line JSON processor.
+
 [Packer](https://www.packer.io/)
 
 - Packer is a tool for creating machine images for providers like Virtualbox, VMWare, AWS, Google cloud.

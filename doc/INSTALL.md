@@ -36,6 +36,10 @@ can alternatively be installed by `pip install -r requirements.txt`
 
 a GPG keypair is required if you opt to use debops-padlock to encrypt your local secrets store.
 
+## Install JQ
+
+- Use Homebrew to install jq with `brew install jq`
+
 ## Install Terraform
 
 - [Terraform Setup](doc/TERRAFORM.md)

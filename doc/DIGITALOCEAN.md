@@ -20,7 +20,7 @@ request a list of images
 curl -X GET\
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $TF_VAR_do_api_token" \
-  "https://api.digitalocean.com/v2/images?page=1&per_page=1000"
+  "https://api.digitalocean.com/v2/images?page=1&per_page=1000" | jq '.'
 ```
 
 response includes images, details, and regions available
@@ -54,7 +54,7 @@ request a list of regions
 curl -X GET \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $TF_VAR_do_api_token" \
-  "https://api.digitalocean.com/v2/regions"
+  "https://api.digitalocean.com/v2/regions" | jq '.'
 ```
 
 response includes sizes and features available in each region
@@ -83,7 +83,7 @@ request a list of sizes
 curl -X GET \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $TF_VAR_do_api_token" \
-  "https://api.digitalocean.com/v2/sizes"
+  "https://api.digitalocean.com/v2/sizes" | jq '.'
 ```
 
 response includes sizes, details, and regions available
@@ -121,7 +121,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $TF_VAR_do_api_token" \
   -d "{\"name\":\"$SSH_KEY_NAME\",\"public_key\":\"$SSH_KEY\"}" \
-  "https://api.digitalocean.com/v2/account/keys"
+  "https://api.digitalocean.com/v2/account/keys" | jq '.'
 ```
 
 ### List available SSH Keys
@@ -132,7 +132,7 @@ request a list of ssh keys
 curl -X GET \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $TF_VAR_do_api_token" \
-  "https://api.digitalocean.com/v2/account/keys"
+  "https://api.digitalocean.com/v2/account/keys" | jq '.'
 ```
 
 response includes
@@ -160,4 +160,4 @@ response includes keys and details
 curl -X DELETE \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $TF_VAR_do_api_token" \
-  "https://api.digitalocean.com/v2/account/keys/9246644"
+  "https://api.digitalocean.com/v2/account/keys/9246644" | jq '.'

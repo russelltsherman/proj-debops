@@ -4,6 +4,7 @@
   vb_group: "/querium"
   debops_groups:
   - "debops_docker_hosts"
+  - "swarm_managers"
   nics:
     - type: "private_network"
       ip_addr: "192.168.100.101"
@@ -16,6 +17,7 @@
   vb_group: "/querium"
   debops_groups:
   - "debops_docker_hosts"
+  - "swarm_workers"
   nics:
     - type: "private_network"
       ip_addr: "192.168.100.102"
@@ -28,6 +30,7 @@
   vb_group: "/querium"
   debops_groups:
   - "debops_docker_hosts"
+  - "swarm_workers"
   nics:
     - type: "private_network"
       ip_addr: "192.168.100.103"

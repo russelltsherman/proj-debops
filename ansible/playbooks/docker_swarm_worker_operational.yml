@@ -1,0 +1,14 @@
+- name: Docker Swarm Worker Operational
+  hosts: [ 'swarm_worker_operational' ]
+  become: True
+
+  environment: '{{ inventory__environment | d({})
+                   | combine(inventory__group_environment | d({}))
+                   | combine(inventory__host_environment  | d({})) }}'
+
+  tasks:
+    - debug: var=inventory_hostname
+    - debug: var=ansible_default_ipv4.address
+    - debug: var=swarm_manager_token
+    - debug: var=swarm_worker_token
+

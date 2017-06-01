@@ -1,0 +1,18 @@
+---
+- name: Update APT packages
+  hosts: [ 'debops_all_hosts' ]
+  become: True
+
+  environment: '{{ inventory__environment | d({})
+                   | combine(inventory__group_environment | d({}))
+                   | combine(inventory__host_environment  | d({})) }}'
+  tasks:
+
+    - name: "FIX: Ubuntu 16.04 LTS doesn't come with certain modules, required by ansible"
+      raw: apt-get install python-minimal aptitude -y
+
+    - name: Update APT packages
+      apt: >
+        upgrade=yes
+        update_cache=yes
+        cache_valid_time=3600

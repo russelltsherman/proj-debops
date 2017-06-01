@@ -1,0 +1,23 @@
+- name: Docker Swarm Worker Bootstrap
+  hosts: [ 'swarm_worker_bootstrap' ]
+  become: True
+
+  environment: '{{ inventory__environment | d({})
+                   | combine(inventory__group_environment | d({}))
+                   | combine(inventory__host_environment  | d({})) }}'
+
+  vars:
+    swarm_manager_token: "{{ hostvars[groups['swarm_manager_operational'][0]]['swarm_manager_token']['stdout'] }}"
+    swarm_worker_token: "{{ hostvars[groups['swarm_manager_operational'][0]]['swarm_worker_token']['stdout'] }}"
+
+  tasks:
+    - debug: var=inventory_hostname
+    - debug: var=ansible_default_ipv4.address
+    - debug: var=swarm_manager_token
+    - debug: var=swarm_worker_token
+    - debug: var=groups['swarm_manager_ips']
+
+    - name: join worker node to cluster
+      shell: >
+        docker swarm join --token {{ swarm_worker_token }} {{ groups['swarm_manager_ips'][0] }}:2377
+

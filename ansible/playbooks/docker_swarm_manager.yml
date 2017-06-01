@@ -1,0 +1,45 @@
+- name: Docker Swarm Manager
+  hosts: [ 'swarm_managers' ]
+  become: True
+
+  #
+  # check swarm status on each host
+  # if swarm status is active add host to swarm_manager_operational hosts group
+  # if swarm status is not active add host to swarm_manager_bootstrap hosts group
+  #
+
+  environment: '{{ inventory__environment | d({})
+                   | combine(inventory__group_environment | d({}))
+                   | combine(inventory__host_environment  | d({})) }}'
+
+  vars:
+    swarm_status: "{{ hostvars[inventory_hostname]['docker_info']['Swarm']['LocalNodeState'] }}"
+
+  tasks:
+    - debug: var=swarm_status
+    - debug: var=ansible_all_ipv4_addresses
+    - debug: var=ansible_default_ipv4.address
+
+    - name: create swarm_manager_operational group
+      add_host:
+        hostname: "{{ item }}"
+        groups: swarm_manager_operational
+      with_items: "{{ play_hosts }}"
+      when: swarm_status == 'active'
+      run_once: true
+
+    - debug: var=hostvars[inventory_hostname]['groups']['swarm_manager_operational']
+
+    - name: create swarm_manager_bootstrap group
+      add_host:
+        hostname: "{{ item }}"
+        groups: swarm_manager_bootstrap
+      with_items: "{{ play_hosts }}"
+      when: swarm_status != 'active'
+      run_once: true
+
+    - debug: var=hostvars[inventory_hostname]['groups']['swarm_manager_bootstrap']
+
+- include: docker_swarm_manager_bootstrap.yml
+
+- include: docker_swarm_manager_operational.yml

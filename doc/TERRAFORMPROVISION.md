@@ -25,13 +25,21 @@ bin/do_tf_inventory
 
 ## Provision hosts using ansible
 
-See here for instructions for [debops provisioning](DEBOPSPROVISION.md)
+ping our hosts to validate connectivity
+
+```bash
+ansible -m ping -u root -i ansible/inventory/hosts_terraform all
+```
 
 to limit DebOps command to only operate on terraform hosts add the -i flag to specify inventory file
 
 ```bash
+debops bootstrap -i ansible/inventory/hosts_terraform
+debops common -i ansible/inventory/hosts_terraform -u devops
 debops -i ansible/inventory/hosts_terraform
 ```
+
+See here for more instructions for [debops provisioning](DEBOPSPROVISION.md)
 
 ## Connect to a node to verify setup
 

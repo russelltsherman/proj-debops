@@ -5,11 +5,11 @@
   debops_groups:
   - "debops_docker_hosts"
   - "swarm_managers"
-  nics:
-    - type: "private_network"
-      ip_addr: "192.168.100.101"
-    - type: "public_network"
-      ip_addr: "192.168.1.191"
+  network:
+    public:
+      gateway: "192.168.1.1"
+      address: "192.168.1.191"
+      netmask: "255.255.0.0"
   ram: "1024"
   vcpu: "2"
 - box: "bento/ubuntu-16.10"
@@ -18,11 +18,11 @@
   debops_groups:
   - "debops_docker_hosts"
   - "swarm_workers"
-  nics:
-    - type: "private_network"
-      ip_addr: "192.168.100.102"
-    - type: "public_network"
-      ip_addr: "192.168.1.192"
+  network:
+    public:
+      gateway: "192.168.1.1"
+      address: "192.168.1.192"
+      netmask: "255.255.0.0"
   ram: "1024"
   vcpu: "2"
 - box: "bento/ubuntu-16.10"
@@ -31,10 +31,10 @@
   debops_groups:
   - "debops_docker_hosts"
   - "swarm_workers"
-  nics:
-    - type: "private_network"
-      ip_addr: "192.168.100.103"
-    - type: "public_network"
-      ip_addr: "192.168.1.193"
+  network:
+    public:
+      gateway: "192.168.1.1"
+      address: "192.168.1.193"
+      netmask: "255.255.0.0"
   ram: "1024"
   vcpu: "2"

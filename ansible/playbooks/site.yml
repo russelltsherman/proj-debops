@@ -3,5 +3,5 @@
   hosts: [ 'debops_all_hosts' ]
   become: True
 
-- include: ntp.yml
 - include: docker.yml
+- include: docker_swarm.yml

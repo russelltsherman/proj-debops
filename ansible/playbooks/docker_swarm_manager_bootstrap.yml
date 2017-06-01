@@ -1,0 +1,23 @@
+- name: Docker Swarm Manager Bootstrap
+  hosts: [ 'swarm_manager_bootstrap' ]
+  become: True
+
+  environment: '{{ inventory__environment | d({})
+                   | combine(inventory__group_environment | d({}))
+                   | combine(inventory__host_environment  | d({})) }}'
+
+  tasks:
+    - name: initialize swarm cluster
+      shell: >
+        docker swarm init
+        --advertise-addr {{ ansible_default_ipv4.address }}:2377
+      when: "'swarm_manager_operational' not in groups"
+      register: bootstrap_first_node
+
+    - debug: var=bootstrap_first_node
+
+    - name: add initialized host to swarm_manager_operational group
+      add_host:
+        hostname: "{{ play_hosts[0] }}"
+        groups: swarm_manager_operational
+      when: bootstrap_first_node | changed

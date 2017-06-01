@@ -4,6 +4,7 @@
 # Specify minimum Vagrant version and Vagrant API version
 Vagrant.require_version '>= 1.9.5'
 VAGRANT_API_VERSION = '2'
+NET_INT = 'enp0s3'
 
 # Require 'yaml' module
 require 'yaml'
@@ -37,12 +38,27 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
         vb.customize ["modifyvm", :id, "--groups", machine['vb_group']]
       end # srv.vm.provider virtualbox
 
+      srv.vm.network "public_network",
+        ip: machine['network']['public']['address'],
+        netmask: machine['network']['public']['netmask']
+
+      # default router
+      srv.vm.provision "shell", inline: <<-SHELL
+        sudo route add default gw #{machine['network']['public']['gateway']}
+      SHELL
+
+      # delete default gw on #{NET_INT}
+      srv.vm.provision "shell", inline: <<-SHELL
+        eval `route -n | awk '{ if ($8 =="#{NET_INT}" && $2 != "0.0.0.0") print "sudo route del default gw " $2; }'`
+      SHELL
+
       # Enable provisioning with a shell script. Additional provisioners such as
       # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
       # documentation for more information about their specific syntax and use.
-      # srv.vm.provision "shell", inline: <<-SHELL
-      #   apt-get update
-      # SHELL
+      srv.vm.provision "shell", inline: <<-SHELL
+        ifconfig
+        route
+      SHELL
 
       # Dynamically create/update ansible inventory file
       srv.vm.provision "vai" do |ansible|

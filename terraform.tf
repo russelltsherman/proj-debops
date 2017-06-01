@@ -1,4 +1,4 @@
-variable "do_ssh_key" {
+variable "do_ssh_fprint" {
   type        = "string"
   description = "Digital Ocean SSH Key fingerprint"
 }
@@ -29,7 +29,7 @@ resource "digitalocean_droplet" "node01" {
   size = "1GB"
   name = "node01"
   region = "NYC1"
-  ssh_keys = ["${var.do_ssh_key}"]
+  ssh_keys = ["${var.do_ssh_fprint}"]
   tags   = ["${digitalocean_tag.debops_docker_hosts.id}"]
 }
 
@@ -39,7 +39,7 @@ resource "digitalocean_droplet" "node02" {
   size = "1GB"
   name = "node02"
   region = "NYC1"
-  ssh_keys = ["${var.do_ssh_key}"]
+  ssh_keys = ["${var.do_ssh_fprint}"]
   tags   = ["${digitalocean_tag.debops_docker_hosts.id}"]
 }
 
@@ -49,6 +49,6 @@ resource "digitalocean_droplet" "node03" {
   size = "1GB"
   name = "node03"
   region = "NYC1"
-  ssh_keys = ["${var.do_ssh_key}"]
+  ssh_keys = ["${var.do_ssh_fprint}"]
   tags   = ["${digitalocean_tag.debops_docker_hosts.id}"]
 }

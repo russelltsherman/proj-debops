@@ -1,2 +1,2 @@
 do_api_token="<your-digital-ocean-api-token>"
-do_ssh_key="<your-digital-ocean-ssh-key-fingerprint>"
+do_ssh_fprint="<your-digital-ocean-ssh-key-fingerprint>"

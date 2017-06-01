@@ -75,7 +75,7 @@ def writeInventoryFile():
         if tag['name'] in host['tags']:
           line = host['name'] + "\n"
           out.append(line)
-
+      out.append("\n")
     out.append("\n")
 
     with open(inventory_file, 'w') as file:

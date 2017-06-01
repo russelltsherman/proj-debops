@@ -23,6 +23,16 @@ resource "digitalocean_tag" "debops_docker_hosts" {
   name = "debops_docker_hosts"
 }
 
+# Create a tag swarm_managers
+resource "digitalocean_tag" "swarm_managers" {
+  name = "swarm_managers"
+}
+
+# Create a tag swarm_managers
+resource "digitalocean_tag" "swarm_workers" {
+  name = "swarm_workers"
+}
+
 # Create a droplet in nyc1 with the debops_docker_hosts tag
 resource "digitalocean_droplet" "node01" {
   image = "${var.swarm_node_image}"
@@ -30,7 +40,10 @@ resource "digitalocean_droplet" "node01" {
   name = "node01"
   region = "NYC1"
   ssh_keys = ["${var.do_ssh_fprint}"]
-  tags   = ["${digitalocean_tag.debops_docker_hosts.id}"]
+  tags   = [
+    "${digitalocean_tag.debops_docker_hosts.id}",
+    "${digitalocean_tag.swarm_managers.id}"
+  ]
 }
 
 # Create a droplet in nyc1 with the debops_docker_hosts tag
@@ -40,7 +53,10 @@ resource "digitalocean_droplet" "node02" {
   name = "node02"
   region = "NYC1"
   ssh_keys = ["${var.do_ssh_fprint}"]
-  tags   = ["${digitalocean_tag.debops_docker_hosts.id}"]
+  tags   = [
+    "${digitalocean_tag.debops_docker_hosts.id}",
+    "${digitalocean_tag.swarm_workers.id}"
+  ]
 }
 
 # Create a droplet in nyc1 with the debops_docker_hosts tag
@@ -50,5 +66,8 @@ resource "digitalocean_droplet" "node03" {
   name = "node03"
   region = "NYC1"
   ssh_keys = ["${var.do_ssh_fprint}"]
-  tags   = ["${digitalocean_tag.debops_docker_hosts.id}"]
+  tags   = [
+    "${digitalocean_tag.debops_docker_hosts.id}",
+    "${digitalocean_tag.swarm_workers.id}"
+  ]
 }

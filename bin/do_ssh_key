@@ -7,23 +7,23 @@ import json
 import requests
 import sys
 
-vars_file = 'terraform.tfvars'
-vn_api_token = 'do_api_token'
+vars_file = '.vars'
+vn_api_token = 'TF_VAR_do_api_token'
 vn_api_pholder = '<your-digital-ocean-api-token>'
-vn_ssh_fprint = 'do_ssh_fprint'
+vn_ssh_fprint = 'TF_VAR_do_ssh_fprint'
 vn_ssh_pholder = '<your-digital-ocean-ssh-key-fingerprint>'
 
 def usage():
   print ""
-  print "usage: do_ssh_key SSH_PUB_KEY"
+  print "usage: do_ssh_key PATH_TO_SSH_PUB_KEY"
   print ""
   sys.exit(0)
 
 def readDoToken():
   with open(vars_file, 'rb') as f:
     for line in f:
-      if line.startswith(vn_api_token):
-        if line == vn_api_token+'="'+vn_api_pholder+''"\n':
+      if line.startswith('export '+vn_api_token):
+        if line == vn_api_token+'="'+vn_api_pholder+'"\n':
           raise IOError('Digital Ocean API Token not set')
         else:
           return line.split('=')[1].replace('"', '').rstrip()
@@ -40,8 +40,8 @@ def writeFingerprintTfvar(fingerprint):
     data = file.readlines()
 
   for idx, line in enumerate(data):
-    if line.startswith(vn_ssh_fprint):
-      data[idx] = vn_ssh_fprint+'="'+fingerprint+'"\n'
+    if line.startswith('export '+vn_ssh_fprint):
+      data[idx] = 'export '+vn_ssh_fprint+'="'+fingerprint+'"\n'
 
   with open(vars_file, 'w') as file:
       file.writelines( data )

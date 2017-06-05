@@ -16,6 +16,5 @@ ansible/inventory/hosts_terraform
 ansible/.encfs.secret
 ansible/secret
 
-# ignore terraform state and plan files
-terraform.tfstate*
+# ignore terraform plan files
 terraform.plan

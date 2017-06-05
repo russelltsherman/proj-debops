@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+vagrant_up() {
+  vagrant up && \
+  debops bootstrap -i ansible/inventory/hosts_vagrant --sudo -u vagrant --ask-pass && \
+  debops common -i ansible/inventory/hosts_vagrant -u devops && \
+  debops -i ansible/inventory/hosts_vagrant
+}
+
+vagrant_down() {
+  vagrant destroy -f
+}
+
+if [[ $1 == '' ]]; then
+  vagrant_up
+fi
+
+if [[ $1 == 'up' ]]; then
+  vagrant_up
+fi
+
+if [[ $1 == 'down' ]]; then
+  vagrant_down
+fi

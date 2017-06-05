@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+terraform_up() {
+  terraform plan -out terraform.plan && \
+  terraform apply terraform.plan && \
+  bin/do_tf_inventory terraform.tfstate && \
+  debops bootstrap -i ansible/inventory/hosts_terraform && \
+  debops common -i ansible/inventory/hosts_terraform -u devops && \
+  debops -i ansible/inventory/hosts_terraform
+}
+
+terraform_down() {
+  terraform plan -destroy -out terraform.plan && \
+  terraform apply terraform.plan
+}
+
+if [[ $1 == '' ]]; then
+  terraform_up
+fi
+
+if [[ $1 == 'up' ]]; then
+  terraform_up
+fi
+
+if [[ $1 == 'down' ]]; then
+  terraform_down
+fi

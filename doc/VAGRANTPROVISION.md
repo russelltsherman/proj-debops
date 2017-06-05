@@ -1,28 +1,21 @@
 # VAGRANT: Provision local virtual machines
 
-Initialize VirtualBox virtual machines as defined in VagrantMachines.yml
+These instructions assume you've already installed and configured vagrant.
+Please refer to the [documentation](VAGRANT.md) for more information on installation or configuration.
+
+## Provision vagrant hosts
 
 ```bash
-vagrant up
-```
-
-## Provision hosts using ansible
-
-ping our hosts to validate connectivity
-
-```bash
-ansible -m ping -u root -i ansible/inventory/hosts_vagrant all
-```
-
-to limit DebOps command to only operate on vagrant hosts add the -i flag to specify inventory file
-
-```bash
-debops bootstrap -i ansible/inventory/hosts_vagrant --sudo -u vagrant --ask-pass
-debops common -i ansible/inventory/hosts_vagrant -u devops
-debops -i ansible/inventory/hosts_vagrant
+bin/vagrant up
 ```
 
 See here for more instructions for [debops provisioning](DEBOPSPROVISION.md)
+
+## destroy terraform hosts
+
+```bash
+bin/vagrant down
+```
 
 ## Connect to a node to verify setup
 

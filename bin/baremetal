@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+baremetal_up() {
+  debops bootstrap -i ansible/inventory/hosts && \
+  debops common -i ansible/inventory/hosts -u devops && \
+  debops -i ansible/inventory/hosts
+}
+
+baremetal_down() {
+
+}
+
+if [[ $1 == '' ]]; then
+  baremetal_up
+fi
+
+if [[ $1 == 'up' ]]; then
+  baremetal_up
+fi
+
+if [[ $1 == 'down' ]]; then
+  baremetal_down
+fi

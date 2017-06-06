@@ -16,6 +16,13 @@ You can also use pip to upgrade the scripts themselves:
 
 After the installation is finished, scripts will be available in `/usr/local/bin/`, which should be in your shell's `$PATH`.
 
+## OSX Symlink
+
+on OSX debops playbooks are stored in `~/Library/Application Support/debops/`
+the space in the directory path can cause issues with ansible finding filters and other tools we can correct this by using a symlink
+
+`ls -s .debops ~/Library/Application\ Support/debops/`
+
 ## DebOps prerequisites
 
 To use DebOps playbooks, you need some additional tools on your Ansible Controller besides the official scripts.

@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
 
+usage() {
+  echo "usage bin/terraform (up|bootstrap|apply|down)"
+}
+
 terraform_up() {
   terraform plan -out terraform.plan && \
   terraform apply terraform.plan && \
-  bin/do_tf_inventory terraform.tfstate && \
+  bin/do_tf_inventory terraform.tfstate
+}
+
+terraform_bootstrap() {
   debops bootstrap -i ansible/inventory/hosts_terraform && \
-  debops common -i ansible/inventory/hosts_terraform -u devops && \
-  terraform_apply
+  debops common -i ansible/inventory/hosts_terraform -u devops
 }
 
 terraform_apply() {
@@ -18,12 +24,16 @@ terraform_down() {
   terraform apply terraform.plan
 }
 
-if [[ $1 == '' ]]; then
-  terraform_up
-fi
-
 if [[ $1 == 'up' ]]; then
   terraform_up
+  terraform_bootstrap
+  terraform_apply
+  exit
+fi
+
+if [[ $1 == 'bootstrap' ]]; then
+  terraform_bootstrap
+  exit
 fi
 
 if [[ $1 == 'apply' ]]; then
@@ -32,4 +42,7 @@ fi
 
 if [[ $1 == 'down' ]]; then
   terraform_down
+  exit
 fi
+
+usage

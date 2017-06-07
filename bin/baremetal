@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
+usage() {
+  echo "usage bin/terraform (up|bootstrap|apply|down)"
+}
+
 baremetal_up() {
+}
+
+baremetal_bootstrap() {
   debops bootstrap -i ansible/inventory/hosts && \
-  debops common -i ansible/inventory/hosts -u devops && \
-  baremetal_apply
+  debops common -i ansible/inventory/hosts -u devops
 }
 
 baremetal_apply() {
@@ -11,21 +17,28 @@ baremetal_apply() {
 }
 
 baremetal_down() {
-
 }
-
-if [[ $1 == '' ]]; then
-  baremetal_up
-fi
 
 if [[ $1 == 'up' ]]; then
   baremetal_up
+  baremetal_bootstrap
+  baremetal_apply
+  exit
+fi
+
+if [[ $1 == 'bootstrap' ]]; then
+  baremetal_bootstrap
+  exit
 fi
 
 if [[ $1 == 'apply' ]]; then
   baremetal_apply
+  exit
 fi
 
 if [[ $1 == 'down' ]]; then
   baremetal_down
+  exit
 fi
+
+usage

@@ -6,6 +6,10 @@ terraform_up() {
   bin/do_tf_inventory terraform.tfstate && \
   debops bootstrap -i ansible/inventory/hosts_terraform && \
   debops common -i ansible/inventory/hosts_terraform -u devops && \
+  terraform_apply
+}
+
+terraform_apply() {
   debops -i ansible/inventory/hosts_terraform
 }
 
@@ -20,6 +24,10 @@ fi
 
 if [[ $1 == 'up' ]]; then
   terraform_up
+fi
+
+if [[ $1 == 'apply' ]]; then
+  terraform_apply
 fi
 
 if [[ $1 == 'down' ]]; then

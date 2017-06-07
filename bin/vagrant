@@ -4,6 +4,10 @@ vagrant_up() {
   vagrant up && \
   debops bootstrap -i ansible/inventory/hosts_vagrant --sudo -u vagrant --ask-pass && \
   debops common -i ansible/inventory/hosts_vagrant -u devops && \
+  vagrant_apply
+}
+
+vagrant_apply() {
   debops -i ansible/inventory/hosts_vagrant
 }
 
@@ -17,6 +21,10 @@ fi
 
 if [[ $1 == 'up' ]]; then
   vagrant_up
+fi
+
+if [[ $1 == 'apply' ]]; then
+  vagrant_apply
 fi
 
 if [[ $1 == 'down' ]]; then

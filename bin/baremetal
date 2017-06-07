@@ -3,6 +3,10 @@
 baremetal_up() {
   debops bootstrap -i ansible/inventory/hosts && \
   debops common -i ansible/inventory/hosts -u devops && \
+  baremetal_apply
+}
+
+baremetal_apply() {
   debops -i ansible/inventory/hosts
 }
 
@@ -16,6 +20,10 @@ fi
 
 if [[ $1 == 'up' ]]; then
   baremetal_up
+fi
+
+if [[ $1 == 'apply' ]]; then
+  baremetal_apply
 fi
 
 if [[ $1 == 'down' ]]; then

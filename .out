@@ -3,4 +3,4 @@
 
 # use autoenv https://github.com/kennethreitz/autoenv
 # automatically deactivate pyenv on directory exit
-pyenv deactivate
+pyenv devops

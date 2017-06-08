@@ -3,19 +3,7 @@
     - name: devops
       home: /home/devops
 
-  bootstrap__domain: querium.local
+  bootstrap__domain: devops.local
 
   # disable debops pki
   pki_enabled: False
-
-  # disable debops dhparam
-  dhparam__deploy_state: 'absent'
-
-  # disable debops ferm firewall
-  ferm: False
-
-  # https://gist.github.com/BretFisher/7233b7ecf14bc49eb47715bbeb2a2769
-  docker__custom_ports:
-  - 2377
-  - 7946
-  - 4789

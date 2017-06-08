@@ -12,9 +12,6 @@ require 'yaml'
 # Read YAML file with VM details (box, CPU, RAM, IP addresses)
 # Edit VagrantMachines.yml to change VM configuration details
 machines = YAML.load_file(File.join(File.dirname(__FILE__), 'VagrantMachines.yml'))
-debops_docker_hosts = machines.select {|m| m['debops_groups'].include? 'debops_docker_hosts' }
-swarm_managers = machines.select {|m| m['debops_groups'].include? 'swarm_managers' }
-swarm_workers = machines.select {|m| m['debops_groups'].include? 'swarm_workers' }
 
 Vagrant.configure(VAGRANT_API_VERSION) do |config|
 
@@ -66,9 +63,6 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
         ansible.inventory_filename='hosts_vagrant'
         ansible.groups = {
 					'debops_all_hosts' => machines.map {|m| m['name'] },
-					'debops_docker_hosts' => debops_docker_hosts.map {|m| m['name'] },
-					'swarm_managers' => swarm_managers.map {|m| m['name'] },
-					'swarm_workers' => swarm_workers.map {|m| m['name'] }
         }
       end
 

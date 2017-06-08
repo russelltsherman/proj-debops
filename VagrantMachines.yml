@@ -1,10 +1,9 @@
 ---
 - box: "bento/ubuntu-16.10"
   name: "node01"
-  vb_group: "/querium"
+  vb_group: "/devops"
   debops_groups:
-  - "debops_docker_hosts"
-  - "swarm_managers"
+  - "debops_all_hosts"
   network:
     public:
       gateway: "192.168.1.1"
@@ -12,29 +11,4 @@
       netmask: "255.255.0.0"
   ram: "1024"
   vcpu: "2"
-- box: "bento/ubuntu-16.10"
-  name: "node02"
-  vb_group: "/querium"
-  debops_groups:
-  - "debops_docker_hosts"
-  - "swarm_workers"
-  network:
-    public:
-      gateway: "192.168.1.1"
-      address: "192.168.1.192"
-      netmask: "255.255.0.0"
-  ram: "1024"
-  vcpu: "2"
-- box: "bento/ubuntu-16.10"
-  name: "node03"
-  vb_group: "/querium"
-  debops_groups:
-  - "debops_docker_hosts"
-  - "swarm_workers"
-  network:
-    public:
-      gateway: "192.168.1.1"
-      address: "192.168.1.193"
-      netmask: "255.255.0.0"
-  ram: "1024"
-  vcpu: "2"
+

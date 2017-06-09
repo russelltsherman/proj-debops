@@ -18,7 +18,7 @@ provider "digitalocean" {
     token = "${var.do_api_token}"
 }
 
-# Create a tag debops_docker_hosts
+# Create a tag debops_all_hosts
 resource "digitalocean_tag" "debops_all_hosts" {
   name = "debops_all_hosts"
 }

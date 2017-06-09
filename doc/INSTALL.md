@@ -8,9 +8,9 @@
 
 - [Vagrant Setup](doc/VAGRANT.md)
 
-## Install AutoEnv
+## Install DirEnv
 
-- [AutoEnv Setup](doc/AUTOENV.md)
+- [DirEnv Setup](doc/DIRENV.md)
 
 ## Install PyEnv
 

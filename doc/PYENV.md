@@ -28,16 +28,4 @@ eval "$(pyenv virtualenv-init -)"
 
 ## Instructions
 
-1. install versions of python `pyenv install 2.7.11`
-
-1. set the python version for the local directory `pyenv local 2.7.11`
-
-1. create a virtualenv `pyenv virtualenv 2.7.11 querium`
-
-1. activate virtualenv `pyenv activate querium`
-
-1. deactivate current virtualenv `pyenv deactivate`
-
-1. list virtualenvs `pyenv virtualenvs`
-
-1. delete virtualenv `pyenv uninstall <env-name>`
+1. DirEnv will automatically handle creating, activating, and deactivating our python virtual environment as well as activating

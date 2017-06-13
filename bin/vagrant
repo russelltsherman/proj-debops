@@ -22,8 +22,8 @@ vagrant_down() {
 }
 
 if [[ $1 == 'up' ]]; then
-  vagrant_up
-  vagrant_bootstrap
+  vagrant_up && \
+  vagrant_bootstrap && \
   vagrant_apply
   exit
 fi

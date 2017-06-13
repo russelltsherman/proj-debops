@@ -20,8 +20,8 @@ baremetal_down() {
 }
 
 if [[ $1 == 'up' ]]; then
-  baremetal_up
-  baremetal_bootstrap
+  baremetal_up && \
+  baremetal_bootstrap && \
   baremetal_apply
   exit
 fi

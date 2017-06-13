@@ -4,9 +4,9 @@
 
 - Define server conguration roles in a format which can be utilized by both Vagrant and Terraform
 
-[AutoEnv](https://github.com/kennethreitz)
+[Direnv](https://direnv.net/)
 
-- Magic per-project shell environments. Very pretentious.
+- Magic per-project shell environments. It knows how to hook into bash, zsh, tcsh and fish shell to load or unload environment variables depending on the current directory.
 
 [DebOps](https://debops.org/)
 

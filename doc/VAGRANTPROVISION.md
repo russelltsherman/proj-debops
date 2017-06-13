@@ -11,7 +11,7 @@ bin/vagrant up
 
 See here for more instructions for [debops provisioning](DEBOPSPROVISION.md)
 
-## destroy terraform hosts
+## destroy vagrant hosts
 
 ```bash
 bin/vagrant down

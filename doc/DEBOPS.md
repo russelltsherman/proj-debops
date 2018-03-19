@@ -16,12 +16,11 @@ You can also use pip to upgrade the scripts themselves:
 
 After the installation is finished, scripts will be available in `/usr/local/bin/`, which should be in your shell's `$PATH`.
 
-## OSX Symlink
+## DebOps Playbooks
 
-on OSX debops playbooks are stored in `~/Library/Application Support/debops/`
-the space in the directory path can cause issues with ansible finding filters and other tools we can correct this by using a symlink
+Checkout the DebOps playbook monorepo `debops-update`
 
-`ls -s .debops ~/Library/Application\ Support/debops/`
+DebOps monorepo will be installed into `~/.debops/debops`
 
 ## DebOps prerequisites
 

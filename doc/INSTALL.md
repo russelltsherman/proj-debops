@@ -16,7 +16,7 @@
 
 - [PyEnv Setup](doc/PYENV.md)
 
-do not overlook the instructions for creating the querium python environment
+do not overlook the instructions for creating the python virtual environment
 
 ## Install Ansible
 

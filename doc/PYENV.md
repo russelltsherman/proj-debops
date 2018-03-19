@@ -4,6 +4,12 @@ pyenv lets you easily switch between multiple versions of Python. It's simple, u
 
 pyenv-virtualenv is a pyenv plugin that provides features to manage virtualenvs and [conda](https://conda.io/docs/using/envs.html) environments for Python on UNIX-like systems.
 
+## install Virtualenv
+
+Virtualenv should be installed using pip into your system python.
+
+`pip install virtualenv`
+
 ## Install Pyenv
 
 Download and install Pyenv either [from the github](https://github.com/pyenv/pyenv#installation) or use homebrew.
